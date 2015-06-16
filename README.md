@@ -36,7 +36,7 @@ So, you can use this syntax:
 
 ```puppet
 class { 'gitolite':
-  source => "puppet:///modules/${module_name}/id_rsa.pub",
+  admin_key_source => "puppet:///modules/${module_name}/id_rsa.pub",
 }
 ```
 
@@ -46,7 +46,7 @@ class { 'gitolite':
 
 ```puppet
 class { 'gitolite':
-  content => "ssh-dss AAAAB3NzaC1kc3MAAaCBANzDfIs7n5Co8zEa+dWgr6VzPFrTKsFmaG4l1JPa/XZWId9b4J+Cdf53cCCanUt9K8tFOeuo5TEzy+rS+O48G/R+tpv/iY8wJp7gqdBK2j65JPocLTMZ48rprDTNtg35FJZp6gSbiie7iml9QQUFSzAPOWkA6hP/CcEkh3NiCd0RAAAAFQCrQJliYVH1sXBh5ppC+IDa3j/arQAAAIAYHjea9fGUX31fIRENyIqwVxlX7x3e48XnVJNfZrzC+NSI5BhwnDD5Hb9ls0GOq4kSIkTajmCcb+514YgW3jdlRwiFWbfQbf19CJ1Np6165knbBkGJESaG4+dfUGgkrWMP92k4MbXpmMsKterUq6UDVOIwq4Ke2uBa3iHI5VhdlQAAAIAJ3BawCZz5Ft2T+tHjaUulWRrhQnCv3xHQU8Juat71M9iqCKiNQntZoDAiMrf9h9vGg+ya2ILcplf9zdNwOSVGPebF5S4BqY+LrC7tYcjRrWkrQkioywya1y8+Qt9uqksvcRh7T4WC3yMgbG3NqSHKl51ncDVw7gLzoIURt9Oimw== florent@echoes",
+  admin_key_content => "ssh-dss AAAAB3NzaC1kc3MAAaCBANzDfIs7n5Co8zEa+dWgr6VzPFrTKsFmaG4l1JPa/XZWId9b4J+Cdf53cCCanUt9K8tFOeuo5TEzy+rS+O48G/R+tpv/iY8wJp7gqdBK2j65JPocLTMZ48rprDTNtg35FJZp6gSbiie7iml9QQUFSzAPOWkA6hP/CcEkh3NiCd0RAAAAFQCrQJliYVH1sXBh5ppC+IDa3j/arQAAAIAYHjea9fGUX31fIRENyIqwVxlX7x3e48XnVJNfZrzC+NSI5BhwnDD5Hb9ls0GOq4kSIkTajmCcb+514YgW3jdlRwiFWbfQbf19CJ1Np6165knbBkGJESaG4+dfUGgkrWMP92k4MbXpmMsKterUq6UDVOIwq4Ke2uBa3iHI5VhdlQAAAIAJ3BawCZz5Ft2T+tHjaUulWRrhQnCv3xHQU8Juat71M9iqCKiNQntZoDAiMrf9h9vGg+ya2ILcplf9zdNwOSVGPebF5S4BqY+LrC7tYcjRrWkrQkioywya1y8+Qt9uqksvcRh7T4WC3yMgbG3NqSHKl51ncDVw7gLzoIURt9Oimw== florent@echoes",
 }
 ```
 
