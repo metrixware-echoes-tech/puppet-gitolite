@@ -31,7 +31,7 @@ You can use the module [stahnma-epel](https://forge.puppetlabs.com/stahnma/epel)
 
 ### Beginning with gitolite
 
-The quickest way to get up and running using the gitolite module is to copy your public SSH key in the files folder of this module.
+The quickest way to be up and running using the gitolite module is to copy your public SSH key in the files folder of this module.
 So, you can use this syntax:
 
 ```puppet
@@ -71,19 +71,19 @@ Tells Puppet whether the Gitolite package should be installed, and what version.
 
 ####`package_name`
 
-Tells Puppet what Gitolite package to manage. Valid options: string. Default value: varies by operating system
+Tells Puppet which Gitolite package to manage. Valid options: string. Default value: varies by operating system
 
 ####`home_dir`
 
-Tells Puppet what Gitolite home directory to manage. Valid options: string containing an absolute path. Default value: '/var/lib/gitolite'
+Tells Puppet which Gitolite home directory to manage. Valid options: string containing an absolute path. Default value: '/var/lib/gitolite'
 
 ####`admin_key_source`
 
-Tells Puppet what path of administration SSH key to add to Giolite. Exclusive with the `content` parameter. Valid options: string. Default value: undef
+Tells Puppet which path of administration SSH key to add to Gitolite. Exclusive with the `content` parameter. Valid options: string. Default value: undef
 
 ####`admin_key_content`
 
-Tells Puppet what content of administration SSH key to add to Giolite. Exclusive with the `source` parameter. Valid options: string. Default value: undef
+Tells Puppet what content of administration SSH key to add to Gitolite. Exclusive with the `source` parameter. Valid options: string. Default value: undef
 
 ## Limitations
 
