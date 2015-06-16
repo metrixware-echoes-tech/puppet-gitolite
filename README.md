@@ -73,6 +73,14 @@ Tells Puppet whether the Gitolite package should be installed, and what version.
 
 Tells Puppet which Gitolite package to manage. Valid options: string. Default value: varies by operating system
 
+####`user_name`
+
+Tells Puppet which Gitolite user name to manage. Valid options: string. Default value: varies by operating system
+
+####`group_name`
+
+Tells Puppet which Gitolite group name to manage. Valid options: string. Default value: varies by operating system
+
 ####`home_dir`
 
 Tells Puppet which Gitolite home directory to manage. Valid options: string containing an absolute path. Default value: '/var/lib/gitolite'

@@ -11,7 +11,7 @@ class gitolite::config inherits gitolite {
   }->
   exec { "${gitolite::params::cmd_install} admin.pub":
     path        => [ '/bin', '/sbin', '/usr/bin', '/usr/sbin' ],
-    user        => 'gitolite',
+    user        => $gitolite::user_name,
     cwd         => $gitolite::home_dir,
     environment => "HOME=${gitolite::home_dir}",
     creates     => "${gitolite::home_dir}/projects.list",

@@ -4,13 +4,13 @@ class gitolite::install inherits gitolite {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
-  group { 'gitolite':
+  group { $gitolite::group_name:
     ensure => 'present',
     system => true,
   }->
-  user { 'gitolite':
+  user { $gitolite::user_name:
     ensure           => 'present',
-    gid              => 'gitolite',
+    gid              => $gitolite::group_name,
     home             => $gitolite::home_dir,
     password         => '*',
     password_max_age => '99999',
@@ -20,8 +20,8 @@ class gitolite::install inherits gitolite {
   }->
   file { $gitolite::home_dir:
     ensure => directory,
-    owner  => 'gitolite',
-    group  => 'gitolite',
+    owner  => $gitolite::user_name,
+    group  => $gitolite::group_name,
   }->
   package { $gitolite::package_name:
     ensure => $gitolite::package_ensure,
