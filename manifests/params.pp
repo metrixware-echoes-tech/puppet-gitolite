@@ -2,8 +2,7 @@
 #
 # This is a container class with default parameters for gitolite classes.
 class gitolite::params {
-  $package_ensure  = 'present'
-  $home_dir        = "/var/lib/${package_name}"
+  $package_ensure = 'present'
 
   case $::osfamily {
     'Debian': {
@@ -31,4 +30,6 @@ class gitolite::params {
       fail("Unsupported OS family: ${::osfamily}")
     }
   }
+
+  $home_dir = "/var/lib/${package_name}"
 }
