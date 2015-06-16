@@ -36,7 +36,7 @@ So, you can use this syntax:
 
 ```puppet
 class { 'gitolite':
-  admin_key_source => "puppet:///modules/${module_name}/id_rsa.pub",
+  admin_key_source => "puppet:///modules/gitolite/id_rsa.pub",
 }
 ```
 
