@@ -42,16 +42,16 @@
     }
   ],
   "name": "echoes-gitolite",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "author": "Echoes Technologies",
   "summary": "Puppet module to manage gitolite installation and configuration",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "source": "https://github.com/echoes-tech/puppet-gitolite",
   "project_page": "https://github.com/echoes-tech/puppet-gitolite",
   "issues_url": "https://github.com/echoes-tech/puppet-gitolite/issues",
   "dependencies": [
     {
-      "name": "puppetlabs-stdlib",
+      "name": "puppetlabs/stdlib",
       "version_requirement": ">= 1.0.0"
     }
   ]
