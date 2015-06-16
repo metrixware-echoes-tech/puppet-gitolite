@@ -1,0 +1,34 @@
+# == Class: gitolite::params
+#
+# This is a container class with default parameters for gitolite classes.
+class gitolite::params {
+  $package_ensure  = 'present'
+  $home_dir        = "/var/lib/${package_name}"
+
+  case $::osfamily {
+    'Debian': {
+    case $::lsbdistcodename {
+      'squeeze', 'wheezy', 'lucid', 'precise': {
+          $package_name = 'gitolite'
+          $cmd_install  = 'gl-setup -q'
+        }
+        default: {
+          $package_name = 'gitolite3'
+          $cmd_install  = 'gitolite setup -pk'
+        }
+      }
+    }
+    'RedHat': {
+      if versioncmp($::operatingsystemrelease, 6) < 0 {
+        $package_name = 'gitolite'
+        $cmd_install  = 'gl-setup -q'
+      } else {
+        $package_name = 'gitolite3'
+        $cmd_install  = 'gitolite setup -pk'
+      }
+    }
+    default: {
+      fail("Unsupported OS family: ${::osfamily}")
+    }
+  }
+}

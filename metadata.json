@@ -1,0 +1,59 @@
+{
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "6",
+        "7",
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "10.04",
+        "12.04",
+        "14.04"
+      ]
+    },
+    {
+      "operatingsystem": "Redhat",
+      "operatingsystemrelease": [
+        "5",
+        "6"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "5",
+        "6"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "pe",
+      "version_requirement": "3.x"
+    },
+    {
+      "name": "puppet",
+      "version_requirement": "3.x"
+    }
+  ],
+  "name": "echoes-gitolite",
+  "version": "0.1.0",
+  "author": "Echoes Technologies",
+  "summary": "Puppet module to manage gitolite installation and configuration",
+  "license": "Apache 2.0",
+  "source": "https://github.com/echoes-tech/puppet-gitolite",
+  "project_page": "https://github.com/echoes-tech/puppet-gitolite",
+  "issues_url": "https://github.com/echoes-tech/puppet-gitolite/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0"
+    }
+  ]
+}
+
