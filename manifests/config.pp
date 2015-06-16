@@ -8,6 +8,9 @@ class gitolite::config inherits gitolite {
     ensure  => file,
     source  => $gitolite::admin_key_source,
     content => $gitolite::admin_key_content,
+    owner   => $gitolite::user_name,
+    group   => $gitolite::group_name,
+    mode    => '0400',
   }->
   exec { "${gitolite::params::cmd_install} admin.pub":
     path        => [ '/bin', '/sbin', '/usr/bin', '/usr/sbin' ],
