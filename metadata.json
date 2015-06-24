@@ -1,6 +1,6 @@
 {
   "name": "echoes-gitolite",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "Echoes Technologies",
   "summary": "Puppet module to manage gitolite installation and configuration",
   "license": "Apache-2.0",
