@@ -1,4 +1,12 @@
 {
+  "name": "echoes-gitolite",
+  "version": "0.1.2",
+  "author": "Echoes Technologies",
+  "summary": "Puppet module to manage gitolite installation and configuration",
+  "license": "Apache-2.0",
+  "source": "https://github.com/echoes-tech/puppet-gitolite",
+  "project_page": "https://github.com/echoes-tech/puppet-gitolite",
+  "issues_url": "https://github.com/echoes-tech/puppet-gitolite/issues",
   "operatingsystem_support": [
     {
       "operatingsystem": "Debian",
@@ -41,19 +49,7 @@
       "version_requirement": "3.x"
     }
   ],
-  "name": "echoes-gitolite",
-  "version": "0.1.2",
-  "author": "Echoes Technologies",
-  "summary": "Puppet module to manage gitolite installation and configuration",
-  "license": "Apache-2.0",
-  "source": "https://github.com/echoes-tech/puppet-gitolite",
-  "project_page": "https://github.com/echoes-tech/puppet-gitolite",
-  "issues_url": "https://github.com/echoes-tech/puppet-gitolite/issues",
   "dependencies": [
-    {
-      "name": "puppetlabs/stdlib",
-      "version_requirement": ">= 1.0.0"
-    }
+    {"name":"puppetlabs/stdlib","version_requirement":">= 1.0.0"}
   ]
 }
-

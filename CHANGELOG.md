@@ -1,4 +1,4 @@
-##2015-06-16 - Release 0.1.1
+##2015-06-16 - Release 0.1.2
 ###Summary
 This is the initial release
 
@@ -10,4 +10,4 @@ This is the initial release
 This is the initial release
 
 ####Features
-- Install and configure Gitolite for Debian, Ubuntu, RedHat and CentOS
+- Installs and configures Gitolite for Debian, Ubuntu, RedHat and CentOS

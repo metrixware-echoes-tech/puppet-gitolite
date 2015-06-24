@@ -93,6 +93,17 @@ Tells Puppet which path of administration SSH key to add to Gitolite. Exclusive 
 
 Tells Puppet what content of administration SSH key to add to Gitolite. Exclusive with the `source` parameter. Valid options: string. Default value: undef
 
+####`git_config_keys`
+
+This setting of `.gitolite.rc` file allows the repo admin to define acceptable gitconfig keys. Valid options: string. Default value: empty
+For more details, see : http://gitolite.com/gitolite/rc.html#specific-variables
+
+####`allow_local_code`
+
+Tells Puppet whether the `LOCAL_CODE` setting of `.gitolite.rc` file is enabled. Valid options: boolean. Default value: false
+The value of `LOCAL_CODE` is $ENV{HOME}/local. This option is only available for Gitolite 3.
+For more details, see : http://gitolite.com/gitolite/non-core.html#localcode
+
 ## Limitations
 
 RedHat and Debian family OSes are officially supported. Tested and built on Debian and CentOS.

@@ -6,6 +6,8 @@ class gitolite (
   $home_dir          = $gitolite::params::home_dir,
   $admin_key_source  = undef,
   $admin_key_content = undef,
+  $git_config_keys   = $gitolite::params::git_config_keys,
+  $allow_local_code  = $gitolite::params::allow_local_code,
 ) inherits gitolite::params {
   validate_string($package_ensure)
   validate_string($package_name)
@@ -22,6 +24,9 @@ class gitolite (
   if $admin_key_content {
     validate_string($admin_key_content)
   }
+
+  validate_string($git_config_keys)
+  validate_bool($allow_local_code)
 
   anchor { "${module_name}::begin": } ->
   class { "${module_name}::install": } ->
