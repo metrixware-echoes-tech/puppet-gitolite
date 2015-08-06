@@ -1,3 +1,10 @@
+## 2015-08-06 - Release 0.2.1
+### Summary
+This release updates metadata, the README file, as well as  test improvements.
+
+#### Tests
+- Added future parser in Travis matrix.
+
 ##2015-06-16 - Release 0.2.0
 ###Summary
 This release adds the ability to manage some options of Gitolite configuration file.
