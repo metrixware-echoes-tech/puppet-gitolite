@@ -12,7 +12,8 @@
 4. [Usage - Configuration options and additional functionality](#usage)
 5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 6. [Limitations - OS compatibility, etc.](#limitations)
-7. [Contributors](#contributors)
+7. [Development - Guide for contributing to the module](#development)
+8. [Contributors](#contributors)
 
 ## Overview
 
@@ -52,61 +53,70 @@ class { 'gitolite':
 
 ## Reference
 
-###Classes
+### Classes
 
-####Public Classes
+#### Public Classes
 
 * gitolite: Main class, includes all other classes.
 
-####Private Classes
+#### Private Classes
 
 * gitolite::install: Handles the packages.
 * gitolite::config: Handles the configuration file.
 
-###Parameters
+#### Parameters
 
-####`package_ensure`
+The following parameters are available in the `::gitolite` class:
+
+##### `package_ensure`
 
 Tells Puppet whether the Gitolite package should be installed, and what version. Valid options: 'present', 'latest', or a specific version number. Default value: 'present'
 
-####`package_name`
+##### `package_name`
 
 Tells Puppet which Gitolite package to manage. Valid options: string. Default value: varies by operating system
 
-####`user_name`
+##### `user_name`
 
 Tells Puppet which Gitolite user name to manage. Valid options: string. Default value: varies by operating system
 
-####`group_name`
+##### `group_name`
 
 Tells Puppet which Gitolite group name to manage. Valid options: string. Default value: varies by operating system
 
-####`home_dir`
+##### `home_dir`
 
 Tells Puppet which Gitolite home directory to manage. Valid options: string containing an absolute path. Default value: '/var/lib/gitolite'
 
-####`admin_key_source`
+##### `admin_key_source`
 
 Tells Puppet which path of administration SSH key to add to Gitolite. Exclusive with the `content` parameter. Valid options: string. Default value: undef
 
-####`admin_key_content`
+##### `admin_key_content`
 
 Tells Puppet what content of administration SSH key to add to Gitolite. Exclusive with the `source` parameter. Valid options: string. Default value: undef
 
-####`git_config_keys`
+##### `git_config_keys`
 
 This setting of `.gitolite.rc` file allows the repo admin to define acceptable gitconfig keys. Valid options: string. Default value: empty
 For more details, see : http://gitolite.com/gitolite/rc.html#specific-variables
 
-####`allow_local_code`
+##### `allow_local_code`
 
 Tells Puppet whether the `LOCAL_CODE` setting of `.gitolite.rc` file is enabled. Valid options: boolean. Default value: false
+
 The value of `LOCAL_CODE` is $ENV{HOME}/local. This option is only available for Gitolite 3.
 For more details, see : http://gitolite.com/gitolite/non-core.html#localcode
 
 ## Limitations
 
 RedHat and Debian family OSes are officially supported. Tested and built on Debian and CentOS.
+
+##Development
+
+[Echoes Technologies](https://www.echoes-tech.com) modules on the Puppet Forge are open projects, and community contributions are essential for keeping them great.
+
+[Fork this module on GitHub](https://github.com/echoes-tech/puppet-gitolite/fork)
 
 ## Contributors
 
