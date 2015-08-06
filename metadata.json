@@ -7,6 +7,9 @@
   "source": "https://github.com/echoes-tech/puppet-gitolite",
   "project_page": "https://github.com/echoes-tech/puppet-gitolite",
   "issues_url": "https://github.com/echoes-tech/puppet-gitolite/issues",
+  "tags": [
+    "git"
+  ],
   "operatingsystem_support": [
     {
       "operatingsystem": "Debian",
