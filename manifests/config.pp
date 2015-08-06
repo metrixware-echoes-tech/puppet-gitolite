@@ -18,7 +18,7 @@ class gitolite::config inherits gitolite {
     cwd         => $gitolite::home_dir,
     environment => "HOME=${gitolite::home_dir}",
     creates     => "${gitolite::home_dir}/projects.list",
-    before      => File [ "${gitolite::home_dir}/.gitolite.rc" ],
+    before      => File[ "${gitolite::home_dir}/.gitolite.rc" ],
   }
 
   file { "${gitolite::home_dir}/.gitolite.rc":
