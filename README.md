@@ -1,6 +1,9 @@
 # gitolite
 
-[![Build Status](https://travis-ci.org/echoes-tech/puppet-gitolite.svg?branch=master)](https://travis-ci.org/echoes-tech/puppet-gitolite)
+[![Build Status](https://travis-ci.org/echoes-tech/puppet-gitolite.svg?branch=master)]
+(https://travis-ci.org/echoes-tech/puppet-gitolite)
+[![Flattr Button](https://api.flattr.com/button/flattr-badge-large.png "Flattr This!")]
+(https://flattr.com/submit/auto?user_id=echoes&url=https://forge.puppetlabs.com/echoes/gitolite&title=Puppet%20module%20to%20manage%20Gitolite&description=This%20module%20installs%20and%20configures%20Gitolite.&lang=en_GB&category=software "Puppet module to manage Gitolite installation and configuration")
 
 #### Table of Contents
 
