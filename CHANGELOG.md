@@ -1,3 +1,7 @@
+## 2015-09-17 - Release 0.2.2
+### Summary
+This release fixes a typo for PE2015.2.
+
 ## 2015-08-06 - Release 0.2.1
 ### Summary
 This release updates metadata, the README file, as well as  test improvements.
