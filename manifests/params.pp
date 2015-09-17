@@ -18,7 +18,7 @@ class gitolite::params {
       }
     }
     'RedHat': {
-      if versioncmp($::operatingsystemrelease, 6) < 0 {
+      if versioncmp($::operatingsystemrelease, '6') < 0 {
         $package_name = 'gitolite'
         $cmd_install  = 'gl-setup -q'
       } else {
