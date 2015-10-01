@@ -111,6 +111,12 @@ Tells Puppet whether the `LOCAL_CODE` setting of `.gitolite.rc` file is enabled.
 The value of `LOCAL_CODE` is $ENV{HOME}/local. This option is only available for Gitolite 3.
 For more details, see : http://gitolite.com/gitolite/non-core.html#localcode
 
+##### `repo_specific_hooks`
+
+Tells Puppet whether to enable the `repo-specific-hooks` feature in `.gitolite.rc`. Valid options: boolean. Default value: false
+
+This option is only available for Gitolite 3.
+
 ## Limitations
 
 RedHat and Debian family OSes are officially supported. Tested and built on Debian and CentOS.

@@ -159,7 +159,7 @@
             # 'cgit',
 
             # allow repo-specific hooks to be added
-            # 'repo-specific-hooks',
+            <% if ! @repo_specific_hooks %><%= '# ' -%><% end %>'repo-specific-hooks',
 
         # performance, logging, monitoring...
 
