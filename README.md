@@ -111,6 +111,14 @@ Tells Puppet whether the `LOCAL_CODE` setting of `.gitolite.rc` file is enabled.
 The value of `LOCAL_CODE` is $ENV{HOME}/local. This option is only available for Gitolite 3.
 For more details, see : http://gitolite.com/gitolite/non-core.html#localcode
 
+##### `local_code_in_repo`
+
+Tells Puppet whether the `LOCAL_CODE` setting of `.gitolite.rc` file is set to a director in the gitolite-admin repository.  Must also set `allow_local_code` parameter to true. Valid options: boolean. Default value: false
+
+The value of `LOCAL_CODE` is $rc{GL_ADMIN_BASE}/local. This option is only available for Gitolite 3.
+
+SECURITY WARNING: Enabling this setting will allow anyone with write access to the gitolite-admin repository to execute arbitrary code on the gitolite server.
+
 ## Limitations
 
 RedHat and Debian family OSes are officially supported. Tested and built on Debian and CentOS.
