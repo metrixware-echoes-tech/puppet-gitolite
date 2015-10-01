@@ -8,7 +8,7 @@ class gitolite (
   $admin_key_content  = undef,
   $git_config_keys    = $gitolite::params::git_config_keys,
   $allow_local_code   = $gitolite::params::allow_local_code,
-  $local_code_in_repo = $gitolite::params::allow_local_code,
+  $local_code_in_repo = $gitolite::params::local_code_in_repo,
 ) inherits gitolite::params {
   validate_string($package_ensure)
   validate_string($package_name)
