@@ -8,6 +8,7 @@ class gitolite (
   $admin_key_source    = undef,
   $admin_key_content   = undef,
   $git_config_keys     = $gitolite::params::git_config_keys,
+  $umask               = $gitolite::params::umask,
   $allow_local_code    = $gitolite::params::allow_local_code,
   $local_code_in_repo  = $gitolite::params::local_code_in_repo,
   $repo_specific_hooks = $gitolite::params::repo_specific_hooks,
@@ -30,6 +31,7 @@ class gitolite (
   }
 
   validate_string($git_config_keys)
+  validate_re($umask, '^0[0-7][0-7][0-7]$')
   validate_bool($allow_local_code)
   validate_bool($local_code_in_repo)
   if $local_code_in_repo and ! $allow_local_code {

@@ -108,6 +108,10 @@ Tells Puppet what content of administration SSH key to add to Gitolite. Exclusiv
 This setting of `.gitolite.rc` file allows the repo admin to define acceptable gitconfig keys. Valid options: string. Default value: empty
 For more details, see : http://gitolite.com/gitolite/rc.html#specific-variables
 
+##### `umask`
+
+This setting of `.gitolite.rc` file controls file permissions for gitolite repositories.  Set this to 0027, for example, to allow the `group_name` group to read newly created repos.  Default value: 0077
+
 ##### `allow_local_code`
 
 Tells Puppet whether the `LOCAL_CODE` setting of `.gitolite.rc` file is enabled. Valid options: boolean. Default value: false
