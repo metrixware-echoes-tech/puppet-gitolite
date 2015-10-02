@@ -91,6 +91,10 @@ Tells Puppet which Gitolite group name to manage. Valid options: string. Default
 
 Tells Puppet which Gitolite home directory to manage. Valid options: string containing an absolute path. Default value: '/var/lib/gitolite'
 
+##### `manage_user`
+
+Whether the user/group resources will be managed by this module. Default value: true
+
 ##### `admin_key_source`
 
 Tells Puppet which path of administration SSH key to add to Gitolite. Exclusive with the `content` parameter. Valid options: string. Default value: undef

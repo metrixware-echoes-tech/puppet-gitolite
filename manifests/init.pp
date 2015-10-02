@@ -4,6 +4,7 @@ class gitolite (
   $user_name         = $package_name,
   $group_name        = $package_name,
   $home_dir          = $gitolite::params::home_dir,
+  $manage_user       = $gitolite::params::manage_user,
   $admin_key_source  = undef,
   $admin_key_content = undef,
   $git_config_keys   = $gitolite::params::git_config_keys,
@@ -14,6 +15,7 @@ class gitolite (
   validate_string($user_name)
   validate_string($group_name)
   validate_absolute_path($home_dir)
+  validate_bool($manage_user)
 
   if $admin_key_source and $admin_key_content {
     fail 'Parameters `admin_key_source` and `admin_key_content` are mutually exclusive'
