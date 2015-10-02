@@ -119,6 +119,12 @@ The value of `LOCAL_CODE` is $rc{GL_ADMIN_BASE}/local. This option is only avail
 
 SECURITY WARNING: Enabling this setting will allow anyone with write access to the gitolite-admin repository to execute arbitrary code on the gitolite server.
 
+##### `repo_specific_hooks`
+
+Tells Puppet whether to enable the `repo-specific-hooks` feature in `.gitolite.rc`. Valid options: boolean. Default value: false
+
+This option is only available for Gitolite 3.
+
 ## Limitations
 
 RedHat and Debian family OSes are officially supported. Tested and built on Debian and CentOS.
