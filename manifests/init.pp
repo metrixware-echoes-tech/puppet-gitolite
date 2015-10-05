@@ -7,6 +7,7 @@ class gitolite (
   $admin_key_source  = undef,
   $admin_key_content = undef,
   $git_config_keys   = $gitolite::params::git_config_keys,
+  $umask             = $gitolite::params::umask,
   $allow_local_code  = $gitolite::params::allow_local_code,
 ) inherits gitolite::params {
   validate_string($package_ensure)
@@ -26,6 +27,7 @@ class gitolite (
   }
 
   validate_string($git_config_keys)
+  validate_re($umask, '^0[0-7][0-7][0-7]$')
   validate_bool($allow_local_code)
 
   anchor { "${module_name}::begin": } ->
