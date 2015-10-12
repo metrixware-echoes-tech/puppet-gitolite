@@ -91,6 +91,10 @@ Tells Puppet which Gitolite group name to manage. Valid options: string. Default
 
 Tells Puppet which Gitolite home directory to manage. Valid options: string containing an absolute path. Default value: '/var/lib/gitolite'
 
+##### `manage_user`
+
+Whether the user/group resources will be managed by this module. Default value: true
+
 ##### `admin_key_source`
 
 Tells Puppet which path of administration SSH key to add to Gitolite. Exclusive with the `content` parameter. Valid options: string. Default value: undef
@@ -104,12 +108,30 @@ Tells Puppet what content of administration SSH key to add to Gitolite. Exclusiv
 This setting of `.gitolite.rc` file allows the repo admin to define acceptable gitconfig keys. Valid options: string. Default value: empty
 For more details, see : http://gitolite.com/gitolite/rc.html#specific-variables
 
+##### `umask`
+
+This setting of `.gitolite.rc` file controls file permissions for gitolite repositories.  Set this to 0027, for example, to allow the `group_name` group to read newly created repos.  Default value: 0077
+
 ##### `allow_local_code`
 
 Tells Puppet whether the `LOCAL_CODE` setting of `.gitolite.rc` file is enabled. Valid options: boolean. Default value: false
 
 The value of `LOCAL_CODE` is $ENV{HOME}/local. This option is only available for Gitolite 3.
 For more details, see : http://gitolite.com/gitolite/non-core.html#localcode
+
+##### `local_code_in_repo`
+
+Tells Puppet whether the `LOCAL_CODE` setting of `.gitolite.rc` file is set to a director in the gitolite-admin repository.  Must also set `allow_local_code` parameter to true. Valid options: boolean. Default value: false
+
+The value of `LOCAL_CODE` is $rc{GL_ADMIN_BASE}/local. This option is only available for Gitolite 3.
+
+SECURITY WARNING: Enabling this setting will allow anyone with write access to the gitolite-admin repository to execute arbitrary code on the gitolite server.
+
+##### `repo_specific_hooks`
+
+Tells Puppet whether to enable the `repo-specific-hooks` feature in `.gitolite.rc`. Valid options: boolean. Default value: false
+
+This option is only available for Gitolite 3.
 
 ## Limitations
 
