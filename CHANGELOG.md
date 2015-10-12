@@ -1,3 +1,13 @@
+## 2015-10-12 - Release 0.3.0
+### Summary
+This release adds many options to custom the `.gitolite.rc` file.
+
+#### Features
+- Added parameter to store local code in gitolite-admin repo
+- Added parameter to enable repo-specific-hooks feature
+- Added manage_user parameter to control whether this module manages user/group resources
+- Added umask parameter
+
 ## 2015-09-17 - Release 0.2.2
 ### Summary
 This release fixes a typo for PE2015.2.
