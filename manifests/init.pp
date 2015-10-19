@@ -13,7 +13,9 @@ class gitolite (
   $local_code_in_repo  = $gitolite::params::local_code_in_repo,
   $repo_specific_hooks = $gitolite::params::repo_specific_hooks,
 ) inherits gitolite::params {
-  validate_string($package_ensure)
+  if ! ($package_ensure in ['present', 'installed', 'absent', 'purged', 'held', 'latest']) {
+    fail 'Valid `package_ensure` parameters are present, installed, absent, purged, held, and latest'
+  }
   validate_string($package_name)
   validate_string($user_name)
   validate_string($group_name)
@@ -22,6 +24,8 @@ class gitolite (
 
   if $admin_key_source and $admin_key_content {
     fail 'Parameters `admin_key_source` and `admin_key_content` are mutually exclusive'
+  } elsif !$admin_key_source and !$admin_key_content {
+    fail 'Either `admin_key_source` or `admin_key_content` is required'
   }
   if $admin_key_source {
     validate_string($admin_key_source)
@@ -30,7 +34,10 @@ class gitolite (
     validate_string($admin_key_content)
   }
 
-  validate_string($git_config_keys)
+  if $git_config_keys {
+    validate_string($git_config_keys)
+  }
+
   validate_re($umask, '^0[0-7][0-7][0-7]$')
   validate_bool($allow_local_code)
   validate_bool($local_code_in_repo)
