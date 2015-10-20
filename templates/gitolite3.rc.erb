@@ -70,12 +70,12 @@
     # suggested locations for site-local gitolite code (see cust.html)
 
         # this one is managed directly on the server
-        <% if ! @allow_local_code || @local_code_in_repo %><%= '# ' -%><% end %>LOCAL_CODE                =>  "$ENV{HOME}/local",
+        <% if ! @allow_local_code || @local_code_in_repo %><%= '# ' -%><% end %>LOCAL_CODE                =>  "$ENV{HOME}/<%= @local_code_path %>",
 
         # or you can use this, which lets you put everything in a subdirectory
         # called "local" in your gitolite-admin repo.  For a SECURITY WARNING
         # on this, see http://gitolite.com/gitolite/cust.html#pushcode
-        <% if ! @allow_local_code || ! @local_code_in_repo %><%= '# ' -%><% end %>LOCAL_CODE                =>  "$rc{GL_ADMIN_BASE}/local",
+        <% if ! @allow_local_code || ! @local_code_in_repo %><%= '# ' -%><% end %>LOCAL_CODE                =>  "$rc{GL_ADMIN_BASE}/<%= @local_code_path %>",
 
     # ------------------------------------------------------------------
 

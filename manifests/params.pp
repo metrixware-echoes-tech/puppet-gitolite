@@ -38,4 +38,5 @@ class gitolite::params {
   $allow_local_code    = false
   $local_code_in_repo  = false
   $repo_specific_hooks = false
+  $local_code_path     = 'local'
 }

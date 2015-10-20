@@ -11,6 +11,7 @@ class gitolite (
   $umask               = $gitolite::params::umask,
   $allow_local_code    = $gitolite::params::allow_local_code,
   $local_code_in_repo  = $gitolite::params::local_code_in_repo,
+  $local_code_path     = $gitolite::params::local_code_path,
   $repo_specific_hooks = $gitolite::params::repo_specific_hooks,
 ) inherits gitolite::params {
   if ! ($package_ensure in ['present', 'installed', 'absent', 'purged', 'held', 'latest']) {

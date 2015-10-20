@@ -13,7 +13,7 @@ describe 'gitolite', :type => 'class' do
     [:manage_user, :allow_local_code, :local_code_in_repo, :repo_specific_hooks].each do |param|
       context 'should validate #{param} is a bool' do
         let(:params) { { param => 10, :admin_key_content => 'key' } }
-        it { should compile.and_raise_error(/10 is not a boolean/) }
+        it { should compile.and_raise_error(/is not a boolean/) }
       end
     end
 
@@ -107,6 +107,11 @@ describe 'gitolite', :type => 'class' do
       let(:params) { { :allow_local_code => true, :local_code_in_repo => true, :admin_key_content => 'key' } }
       it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /^\s+# LOCAL_CODE\s+=>\s+"\$ENV\{HOME\}\/local",/) }
       it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /^\s+LOCAL_CODE\s+=>\s+"\$rc\{GL_ADMIN_BASE\}\/local"/) }
+    end
+
+    describe 'setting local code path' do
+      let(:params) { { :allow_local_code => true, :local_code_path => '.gitolite/local', :admin_key_content => 'key' } }
+      it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /^\s+LOCAL_CODE\s+=>\s+"\$ENV\{HOME\}\/\.gitolite\/local",/) }
     end
 
     describe 'repo-specific-hooks' do
