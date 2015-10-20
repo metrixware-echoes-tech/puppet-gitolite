@@ -1,5 +1,12 @@
 # Private class
-class gitolite::config inherits gitolite {
+class gitolite::config (
+  $umask               = $::gitolite::umask,
+  $git_config_keys     = $::gitolite::git_config_keys,
+  $allow_local_code    = $::gitolite::allow_local_code,
+  $local_code_in_repo  = $::gitolite::local_code_in_repo,
+  $repo_specific_hooks = $::gitolite::repo_specific_hooks,
+  $local_code_path     = $::gitolite::local_code_path,
+){
   if $caller_module_name != $module_name {
     fail("Use of private class ${name} by ${caller_module_name}")
   }

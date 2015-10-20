@@ -1,5 +1,5 @@
 # Private class
-class gitolite::install inherits gitolite {
+class gitolite::install {
   if $caller_module_name != $module_name {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
