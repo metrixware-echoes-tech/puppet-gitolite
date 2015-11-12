@@ -44,6 +44,7 @@ class gitolite::params {
     }
   }
 
+  $manage_home_dir     = true
   $manage_user         = true
   $git_config_keys     = ''
   $umask               = 0077
