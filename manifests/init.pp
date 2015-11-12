@@ -1,8 +1,8 @@
 class gitolite (
   $package_ensure      = $gitolite::params::package_ensure,
   $package_name        = $gitolite::params::package_name,
-  $user_name           = $package_name,
-  $group_name          = $package_name,
+  $user_name           = $gitolite::params::user_name,
+  $group_name          = $gitolite::params::group_name,
   $home_dir            = $gitolite::params::home_dir,
   $manage_user         = $gitolite::params::manage_user,
   $admin_key_source    = undef,

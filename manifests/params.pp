@@ -16,6 +16,9 @@ class gitolite::params {
           $cmd_install  = 'gitolite setup -pk'
         }
       }
+      $home_dir   = "/var/lib/${package_name}"
+      $user_name  = $package_name
+      $group_name = $package_name
     }
     'RedHat': {
       if versioncmp($::operatingsystemrelease, '6') < 0 {
@@ -25,13 +28,22 @@ class gitolite::params {
         $package_name = 'gitolite3'
         $cmd_install  = 'gitolite setup -pk'
       }
+      $home_dir   = "/var/lib/${package_name}"
+      $user_name  = $package_name
+      $group_name = $package_name
+    }
+    'Suse': {
+      $package_name = 'gitolite'
+      $cmd_install  = 'gitolite setup -pk'
+      $home_dir     = '/srv/git'
+      $user_name    = 'git'
+      $group_name   = 'git'
     }
     default: {
       fail("Unsupported OS family: ${::osfamily}")
     }
   }
 
-  $home_dir            = "/var/lib/${package_name}"
   $manage_user         = true
   $git_config_keys     = ''
   $umask               = 0077
