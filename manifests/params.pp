@@ -6,8 +6,8 @@ class gitolite::params {
 
   case $::osfamily {
     'Debian': {
-    case $::lsbdistcodename {
-      'squeeze', 'wheezy', 'lucid', 'precise': {
+      case $::lsbdistcodename {
+        'squeeze', 'wheezy', 'lucid', 'precise': {
           $package_name = 'gitolite'
           $cmd_install  = 'gl-setup -q'
         }
