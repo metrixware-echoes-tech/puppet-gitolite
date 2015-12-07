@@ -23,7 +23,7 @@ class gitolite::config inherits gitolite {
 
   file { "${gitolite::home_dir}/.gitolite.rc":
     ensure  => file,
-    content => template("${module_name}/${gitolite::package_name}.rc.erb"),
+    content => template("${module_name}/gitolite${gitolite::version}.rc.erb"),
     owner   => $gitolite::user_name,
     group   => $gitolite::group_name,
   }

@@ -1,6 +1,7 @@
 class gitolite (
   $package_ensure      = $gitolite::params::package_ensure,
   $package_name        = $gitolite::params::package_name,
+  $version             = $gitolite::params::version,
   $user_name           = $gitolite::params::user_name,
   $group_name          = $gitolite::params::group_name,
   $home_dir            = $gitolite::params::home_dir,
@@ -16,6 +17,7 @@ class gitolite (
 ) inherits gitolite::params {
   validate_string($package_ensure)
   validate_string($package_name)
+  validate_re($version, [2, 3])
   validate_string($user_name)
   validate_string($group_name)
   validate_absolute_path($home_dir)

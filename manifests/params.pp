@@ -10,10 +10,12 @@ class gitolite::params {
         'squeeze', 'wheezy', 'lucid', 'precise': {
           $package_name = 'gitolite'
           $cmd_install  = 'gl-setup -q'
+          $version      = 2
         }
         default: {
           $package_name = 'gitolite3'
           $cmd_install  = 'gitolite setup -pk'
+          $version      = 3
         }
       }
       $home_dir   = "/var/lib/${package_name}"
@@ -24,9 +26,11 @@ class gitolite::params {
       if versioncmp($::operatingsystemrelease, '6') < 0 {
         $package_name = 'gitolite'
         $cmd_install  = 'gl-setup -q'
+        $version      = 2
       } else {
         $package_name = 'gitolite3'
         $cmd_install  = 'gitolite setup -pk'
+        $version      = 3
       }
       $home_dir   = "/var/lib/${package_name}"
       $user_name  = $package_name
@@ -38,6 +42,7 @@ class gitolite::params {
       $home_dir     = '/srv/git'
       $user_name    = 'git'
       $group_name   = 'git'
+      $version      = 3
     }
     default: {
       fail("Unsupported OS family: ${::osfamily}")
