@@ -1,9 +1,11 @@
 class gitolite (
   $package_ensure      = $gitolite::params::package_ensure,
   $package_name        = $gitolite::params::package_name,
-  $user_name           = $package_name,
-  $group_name          = $package_name,
+  $version             = $gitolite::params::version,
+  $user_name           = $gitolite::params::user_name,
+  $group_name          = $gitolite::params::group_name,
   $home_dir            = $gitolite::params::home_dir,
+  $manage_home_dir     = $gitolite::params::manage_home_dir,
   $manage_user         = $gitolite::params::manage_user,
   $admin_key_source    = undef,
   $admin_key_content   = undef,
@@ -16,9 +18,11 @@ class gitolite (
 ) inherits gitolite::params {
   validate_string($package_ensure)
   validate_string($package_name)
+  validate_re($version, [2, 3])
   validate_string($user_name)
   validate_string($group_name)
   validate_absolute_path($home_dir)
+  validate_bool($manage_home_dir)
   validate_bool($manage_user)
 
   if $admin_key_source and $admin_key_content {
