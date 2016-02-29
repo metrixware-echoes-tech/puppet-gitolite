@@ -11,6 +11,7 @@ class gitolite (
   $umask               = $gitolite::params::umask,
   $allow_local_code    = $gitolite::params::allow_local_code,
   $local_code_in_repo  = $gitolite::params::local_code_in_repo,
+  $local_code_path     = $gitolite::params::local_code_path,
   $repo_specific_hooks = $gitolite::params::repo_specific_hooks,
 ) inherits gitolite::params {
   validate_string($package_ensure)
@@ -34,6 +35,7 @@ class gitolite (
   validate_re($umask, '^0[0-7][0-7][0-7]$')
   validate_bool($allow_local_code)
   validate_bool($local_code_in_repo)
+  validate_absolute_path($local_code_path)
   if $local_code_in_repo and ! $allow_local_code {
     fail 'Parameter `allow_local_code` must be true to enable `local_code_in_repo`'
   }

@@ -34,8 +34,9 @@ class gitolite::params {
   $home_dir            = "/var/lib/${package_name}"
   $manage_user         = true
   $git_config_keys     = ''
-  $umask               = 0077
+  $umask               = '0077'
   $allow_local_code    = false
   $local_code_in_repo  = false
   $repo_specific_hooks = false
+  $local_code_path     = 'local'
 }
