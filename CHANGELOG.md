@@ -1,3 +1,18 @@
+## 2015-02-29 - Release 0.4.0
+### Summary
+This release adds options to custom the `.gitolite.rc` files and many tests.
+
+#### Features
+- Added parameter to set local code path
+- Added parameter to manage Gitolite version
+
+#### Tests
+- Improved Travis configuration
+- Added specs
+
+#### Bugfixes
+- Fixed bad permissions on PuppetLabs forge package
+
 ## 2015-10-12 - Release 0.3.0
 ### Summary
 This release adds many options to custom the `.gitolite.rc` file.
