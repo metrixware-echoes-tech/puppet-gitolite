@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'gitolite', :type => 'class' do
   let(:facts) {{ :is_virtual => 'false' }}
 
-  ['Debian', 'RedHat'].each do |system|
+  ['Debian', 'RedHat', 'Suse'].each do |system|
     context "when on system #{system}" do
 
       let (:facts) do
@@ -52,46 +52,86 @@ describe 'gitolite', :type => 'class' do
       describe 'gitolite::install' do
         describe 'default' do
           let(:params) { { :admin_key_content => 'key'} }
-          it { should contain_group('gitolite3') }
-          it { should contain_user('gitolite3').with(:home => '/var/lib/gitolite3') }
-          it { should contain_file('/var/lib/gitolite3').with(:owner => 'gitolite3', :group => 'gitolite3')}
-          it { should contain_package('gitolite3').with(:ensure => 'present')}
+          case system
+          when 'Suse'
+            it { should contain_group('git') }
+            it { should contain_user('git').with(:home => '/srv/git') }
+            it { should contain_file('/srv/git').with(:owner => 'git', :group => 'git')}
+            it { should contain_package('gitolite').with(:ensure => 'present')}
+          else
+            it { should contain_group('gitolite3') }
+            it { should contain_user('gitolite3').with(:home => '/var/lib/gitolite3') }
+            it { should contain_file('/var/lib/gitolite3').with(:owner => 'gitolite3', :group => 'gitolite3')}
+            it { should contain_package('gitolite3').with(:ensure => 'present')}
+          end
         end
 
         describe 'configure user/group' do
           let(:params) { { :user_name => 'kirk', :group_name => 'captain', :admin_key_content => 'key' } }
           it { should contain_group('captain') }
           it { should contain_user('kirk')}
-          it { should contain_file('/var/lib/gitolite3').with(:owner => 'kirk', :group => 'captain')}
+          case system
+          when 'Suse'
+            it { should contain_file('/srv/git').with(:owner => 'kirk', :group => 'captain')}
+          else
+            it { should contain_file('/var/lib/gitolite3').with(:owner => 'kirk', :group => 'captain')}
+          end
         end
 
         describe 'without user' do
           let(:params) { { :manage_user => false, :admin_key_content => 'key' } }
-          it { should_not contain_user('gitolite3') }
-          it { should_not contain_group('gitolite3') }
+          case system
+          when 'Suse'
+            it { should_not contain_user('git') }
+            it { should_not contain_group('git') }
+          else
+            it { should_not contain_user('gitolite3') }
+            it { should_not contain_group('gitolite3') }
+          end
         end
 
         describe 'latest package' do
           let(:params) { { :package_ensure => 'latest', :admin_key_content => 'key' } }
-          it { should contain_package('gitolite3').with(:ensure => 'latest') }
+          case system
+          when 'Suse'
+            it { should contain_package('gitolite').with(:ensure => 'latest') }
+          else
+            it { should contain_package('gitolite3').with(:ensure => 'latest') }
+          end
         end
       end # gitolite::install
 
       describe 'gitolite::config' do
         describe 'default' do
           let(:params) { { :admin_key_content => 'key' } }
-          it { should contain_file('/var/lib/gitolite3/admin.pub').with(:source => nil, :content => 'key', :owner => 'gitolite3', :group => 'gitolite3')}
-          it { should contain_exec('gitolite setup -pk admin.pub').with(:environment => 'HOME=/var/lib/gitolite3') }
-          it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /UMASK\s+=>\s+0077,/) }
-          it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /GIT_CONFIG_KEYS\s+=>\s+'',/) }
-          it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /^\s+# LOCAL_CODE\s+=>\s+"\$ENV\{HOME\}\/local",/) }
-          it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /^\s+# LOCAL_CODE\s+=>\s+"\$rc\{GL_ADMIN_BASE\}\/local"/) }
-          it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /^\s+# 'repo-specific-hooks'/) }
+          case system
+          when 'Suse'
+            it { should contain_file('/srv/git/admin.pub').with(:source => nil, :content => 'key', :owner => 'git', :group => 'git')}
+            it { should contain_exec('gitolite setup -pk admin.pub').with(:environment => 'HOME=/srv/git') }
+            it { should contain_file('/srv/git/.gitolite.rc').with(:content => /UMASK\s+=>\s+0077,/) }
+            it { should contain_file('/srv/git/.gitolite.rc').with(:content => /GIT_CONFIG_KEYS\s+=>\s+'',/) }
+            it { should contain_file('/srv/git/.gitolite.rc').with(:content => /^\s+# LOCAL_CODE\s+=>\s+"\$ENV\{HOME\}\/local",/) }
+            it { should contain_file('/srv/git/.gitolite.rc').with(:content => /^\s+# LOCAL_CODE\s+=>\s+"\$rc\{GL_ADMIN_BASE\}\/local"/) }
+            it { should contain_file('/srv/git/.gitolite.rc').with(:content => /^\s+# 'repo-specific-hooks'/) }
+          else
+            it { should contain_file('/var/lib/gitolite3/admin.pub').with(:source => nil, :content => 'key', :owner => 'gitolite3', :group => 'gitolite3')}
+            it { should contain_exec('gitolite setup -pk admin.pub').with(:environment => 'HOME=/var/lib/gitolite3') }
+            it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /UMASK\s+=>\s+0077,/) }
+            it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /GIT_CONFIG_KEYS\s+=>\s+'',/) }
+            it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /^\s+# LOCAL_CODE\s+=>\s+"\$ENV\{HOME\}\/local",/) }
+            it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /^\s+# LOCAL_CODE\s+=>\s+"\$rc\{GL_ADMIN_BASE\}\/local"/) }
+            it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /^\s+# 'repo-specific-hooks'/) }
+          end
         end
 
         describe 'with admin_key_source' do
           let(:params) { { :admin_key_source => 'puppet:///data/gitolite.pub' } }
-          it { should contain_file('/var/lib/gitolite3/admin.pub').with(:source => 'puppet:///data/gitolite.pub', :content => nil) }
+          case system
+          when 'Suse'
+            it { should contain_file('/srv/git/admin.pub').with(:source => 'puppet:///data/gitolite.pub', :content => nil) }
+          else
+            it { should contain_file('/var/lib/gitolite3/admin.pub').with(:source => 'puppet:///data/gitolite.pub', :content => nil) }
+          end
         end
 
         describe 'updated home dir' do
@@ -105,24 +145,46 @@ describe 'gitolite', :type => 'class' do
         # Makes sense, but somewhat hard to follow
         describe 'allow local code' do
           let(:params) { { :allow_local_code => true, :local_code_in_repo => false, :admin_key_content => 'key' } }
-          it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /^\s+LOCAL_CODE\s+=>\s+"\$ENV\{HOME\}\/local",/) }
-          it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /^\s+# LOCAL_CODE\s+=>\s+"\$rc\{GL_ADMIN_BASE\}\/local"/) }
+          case system
+          when 'Suse'
+            it { should contain_file('/srv/git/.gitolite.rc').with(:content => /^\s+LOCAL_CODE\s+=>\s+"\$ENV\{HOME\}\/local",/) }
+            it { should contain_file('/srv/git/.gitolite.rc').with(:content => /^\s+# LOCAL_CODE\s+=>\s+"\$rc\{GL_ADMIN_BASE\}\/local"/) }
+          else
+            it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /^\s+LOCAL_CODE\s+=>\s+"\$ENV\{HOME\}\/local",/) }
+            it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /^\s+# LOCAL_CODE\s+=>\s+"\$rc\{GL_ADMIN_BASE\}\/local"/) }
+          end
         end
 
         describe 'allow local code in repo' do
           let(:params) { { :allow_local_code => true, :local_code_in_repo => true, :admin_key_content => 'key' } }
-          it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /^\s+# LOCAL_CODE\s+=>\s+"\$ENV\{HOME\}\/local",/) }
-          it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /^\s+LOCAL_CODE\s+=>\s+"\$rc\{GL_ADMIN_BASE\}\/local"/) }
+          case system
+          when 'Suse'
+            it { should contain_file('/srv/git/.gitolite.rc').with(:content => /^\s+# LOCAL_CODE\s+=>\s+"\$ENV\{HOME\}\/local",/) }
+            it { should contain_file('/srv/git/.gitolite.rc').with(:content => /^\s+LOCAL_CODE\s+=>\s+"\$rc\{GL_ADMIN_BASE\}\/local"/) }
+          else
+            it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /^\s+# LOCAL_CODE\s+=>\s+"\$ENV\{HOME\}\/local",/) }
+            it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /^\s+LOCAL_CODE\s+=>\s+"\$rc\{GL_ADMIN_BASE\}\/local"/) }
+          end
         end
 
         describe 'setting local code path' do
           let(:params) { { :allow_local_code => true, :local_code_path => '.gitolite/local', :admin_key_content => 'key' } }
-          it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /^\s+LOCAL_CODE\s+=>\s+"\$ENV\{HOME\}\/\.gitolite\/local",/) }
+          case system
+          when 'Suse'
+            it { should contain_file('/srv/git/.gitolite.rc').with(:content => /^\s+LOCAL_CODE\s+=>\s+"\$ENV\{HOME\}\/\.gitolite\/local",/) }
+          else
+            it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /^\s+LOCAL_CODE\s+=>\s+"\$ENV\{HOME\}\/\.gitolite\/local",/) }
+          end
         end
 
         describe 'repo-specific-hooks' do
           let(:params) { { :repo_specific_hooks => true, :admin_key_content => 'key' } }
-          it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /^\s+'repo-specific-hooks'/) }
+          case system
+          when 'Suse'
+            it { should contain_file('/srv/git/.gitolite.rc').with(:content => /^\s+'repo-specific-hooks'/) }
+          else
+            it { should contain_file('/var/lib/gitolite3/.gitolite.rc').with(:content => /^\s+'repo-specific-hooks'/) }
+          end
         end
       end #gitolite::config
     end #when on system #{system}
