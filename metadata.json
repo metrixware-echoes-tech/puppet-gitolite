@@ -59,6 +59,12 @@
         "6",
         "7"
       ]
+    },
+    {
+      "operatingsystem": "SLES",
+      "operatingsystemrelease": [
+        "12"
+      ]
     }
   ],
   "requirements": [
