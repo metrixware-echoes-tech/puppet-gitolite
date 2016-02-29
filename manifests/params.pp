@@ -8,33 +8,19 @@ class gitolite::params {
     'Debian': {
       case $::lsbdistcodename {
         'squeeze', 'wheezy', 'lucid', 'precise': {
-          $cmd_install  = 'gl-setup -q'
-          $package_name = 'gitolite'
-          $version      = '2'
+          $version = '2'
         }
         default: {
-          $cmd_install  = 'gitolite setup -pk'
-          $package_name = 'gitolite3'
-          $version      = '3'
+          $version = '3'
         }
       }
-      $group_name = $package_name
-      $home_dir   = "/var/lib/${package_name}"
-      $user_name  = $package_name
     }
     'RedHat': {
       if versioncmp($::operatingsystemrelease, '6') < 0 {
-        $cmd_install  = 'gl-setup -q'
-        $package_name = 'gitolite'
-        $version      = '2'
+        $version = '2'
       } else {
-        $cmd_install  = 'gitolite setup -pk'
-        $package_name = 'gitolite3'
-        $version      = '3'
+        $version = '3'
       }
-      $group_name = $package_name
-      $home_dir   = "/var/lib/${package_name}"
-      $user_name  = $package_name
     }
     'Suse': {
       $cmd_install  = 'gitolite setup -pk'
@@ -47,6 +33,19 @@ class gitolite::params {
     default: {
       fail("Unsupported OS family: ${::osfamily}")
     }
+  }
+
+  if $::osfamily != 'Suse' {
+    if $version == '2' {
+      $cmd_install  = 'gl-setup -q'
+      $package_name = 'gitolite'
+    } else { # $version == '3'
+      $cmd_install  = 'gitolite setup -pk'
+      $package_name = 'gitolite3'
+    }
+    $group_name = $package_name
+    $home_dir   = "/var/lib/${package_name}"
+    $user_name  = $package_name
   }
 
   $allow_local_code    = false
