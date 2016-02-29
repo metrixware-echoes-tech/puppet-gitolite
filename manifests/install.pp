@@ -21,11 +21,16 @@ class gitolite::install inherits gitolite {
       before           => File[$gitolite::home_dir],
     }
   }
-  file { $gitolite::home_dir:
-    ensure => directory,
-    owner  => $gitolite::user_name,
-    group  => $gitolite::group_name,
-  }->
+
+  if $gitolite::manage_home_dir {
+    file { $gitolite::home_dir:
+      ensure => directory,
+      owner  => $gitolite::user_name,
+      group  => $gitolite::group_name,
+      before => Package[$gitolite::package_name],
+    }
+  }
+
   package { $gitolite::package_name:
     ensure => $gitolite::package_ensure,
     alias  => 'gitolite',
