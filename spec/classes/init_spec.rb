@@ -9,9 +9,9 @@ describe 'gitolite', :type => 'class' do
       let (:facts) do
         case system
         when 'RedHat'
-          super().merge({ :osfamily => system, :operatingsystemrelease=> '7.0' })
+          super().merge({ :osfamily => system, :operatingsystemrelease => '7.0' })
         else
-          super().merge({ :osfamily => system })
+          super().merge({ :osfamily => system, :lsbdistcodename => 'jessie' })
         end
       end
 
