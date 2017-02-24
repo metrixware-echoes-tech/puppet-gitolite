@@ -18,7 +18,12 @@ class gitolite::install inherits gitolite {
       password_min_age => '0',
       shell            => '/bin/sh',
       system           => true,
-      before           => File[$gitolite::home_dir],
+    }
+
+    if $gitolite::manage_home_dir_bool {
+      User[$gitolite::user_name] {
+        before => File['gitolite_home_dir'],
+      }
     }
   }
 
@@ -28,7 +33,7 @@ class gitolite::install inherits gitolite {
       path   => $gitolite::home_dir,
       owner  => $gitolite::user_name,
       group  => $gitolite::group_name,
-      before => Package[$gitolite::package_name],
+      before => Package['gitolite'],
     }
   }
 

@@ -7,6 +7,7 @@ describe 'gitolite', :type => 'class' do
         :majrelease        => '6',
         :lsbdistcodename   => 'squeeze',
         :packages          => 'gitolite',
+        :package_name     => 'gitolite',
         :gitolite_version  => '2',
         :cmd_install       => 'gl-setup -q',
         :group_name        => 'gitolite',
@@ -18,6 +19,7 @@ describe 'gitolite', :type => 'class' do
         :majrelease        => '7',
         :lsbdistcodename   => 'wheezy',
         :packages          => 'gitolite',
+        :package_name     => 'gitolite',
         :gitolite_version  => '2',
         :cmd_install       => 'gl-setup -q',
         :group_name        => 'gitolite',
@@ -28,89 +30,97 @@ describe 'gitolite', :type => 'class' do
         :release           => '8.0',
         :majrelease        => '8',
         :lsbdistcodename   => 'jessie',
-        :packages          => 'gitolite3',
+        :packages          => 'gitolite',
+        :package_name     => 'gitolite3',
         :gitolite_version  => '3',
         :cmd_install       => 'gitolite setup -pk',
         :group_name        => 'gitolite3',
         :user_name         => 'gitolite3',
       },
-      'el5' =>
-        { :osfamily          => 'RedHat',
-          :release           => '5.0',
-          :majrelease        => '5',
-          :lsbdistcodename   => nil,
-          :packages          => 'gitolite',
-          :gitolite_version  => '2',
-          :cmd_install       => 'gl-setup -q',
-          :group_name        => 'gitolite',
-          :user_name         => 'gitolite',
-        },
-      'el6' =>
-        { :osfamily          => 'RedHat',
-          :release           => '6.0',
-          :majrelease        => '6',
-          :lsbdistcodename   => nil,
-          :packages          => 'gitolite3',
-          :gitolite_version  => '3',
-          :cmd_install       => 'gitolite setup -pk',
-          :group_name        => 'gitolite3',
-          :user_name         => 'gitolite3',
-        },
-      'el7' =>
-        { :osfamily          => 'RedHat',
-          :release           => '7.0',
-          :majrelease        => '7',
-          :lsbdistcodename   => nil,
-          :packages          => 'gitolite3',
-          :gitolite_version  => '3',
-          :cmd_install       => 'gitolite setup -pk',
-          :group_name        => 'gitolite3',
-          :user_name         => 'gitolite3',
-        },
-      'ubuntu1004' =>
-        { :osfamily          => 'Debian',
-          :release           => '10.04',
-          :majrelease        => '10',
-          :lsbdistcodename   => 'lucid',
-          :packages          => 'gitolite',
-          :gitolite_version  => '2',
-          :cmd_install       => 'gl-setup -q',
-          :group_name        => 'gitolite',
-          :user_name         => 'gitolite',
-        },
-      'ubuntu1204' =>
-        { :osfamily          => 'Debian',
-          :release           => '12.04',
-          :majrelease        => '12',
-          :lsbdistcodename   => 'precise',
-          :packages          => 'gitolite',
-          :gitolite_version  => '2',
-          :cmd_install       => 'gl-setup -q',
-          :group_name        => 'gitolite',
-          :user_name         => 'gitolite',
-        },
-      'ubuntu1404' =>
-        { :osfamily          => 'Debian',
-          :release           => '14.04',
-          :majrelease        => '14',
-          :lsbdistcodename   => 'trusty',
-          :packages          => 'gitolite3',
-          :gitolite_version  => '3',
-          :cmd_install       => 'gitolite setup -pk',
-          :group_name        => 'gitolite3',
-          :user_name         => 'gitolite3',
-        },
-      'ubuntu1604' =>
-        { :osfamily          => 'Debian',
-          :release           => '16.04',
-          :majrelease        => '16',
-          :lsbdistcodename   => 'xenial',
-          :packages          => 'gitolite3',
-          :gitolite_version  => '3',
-          :cmd_install       => 'gitolite setup -pk',
-          :group_name        => 'gitolite3',
-          :user_name         => 'gitolite3',
-        },
+    'el5' =>
+      { :osfamily          => 'RedHat',
+        :release           => '5.0',
+        :majrelease        => '5',
+        :lsbdistcodename   => nil,
+        :packages          => 'gitolite',
+        :package_name     => 'gitolite',
+        :gitolite_version  => '2',
+        :cmd_install       => 'gl-setup -q',
+        :group_name        => 'gitolite',
+        :user_name         => 'gitolite',
+      },
+    'el6' =>
+      { :osfamily          => 'RedHat',
+        :release           => '6.0',
+        :majrelease        => '6',
+        :lsbdistcodename   => nil,
+        :packages          => 'gitolite',
+        :package_name     => 'gitolite3',
+        :gitolite_version  => '3',
+        :cmd_install       => 'gitolite setup -pk',
+        :group_name        => 'gitolite3',
+        :user_name         => 'gitolite3',
+      },
+    'el7' =>
+      { :osfamily          => 'RedHat',
+        :release           => '7.0',
+        :majrelease        => '7',
+        :lsbdistcodename   => nil,
+        :packages          => 'gitolite',
+        :package_name     => 'gitolite3',
+        :gitolite_version  => '3',
+        :cmd_install       => 'gitolite setup -pk',
+        :group_name        => 'gitolite3',
+        :user_name         => 'gitolite3',
+      },
+    'ubuntu1004' =>
+      { :osfamily          => 'Debian',
+        :release           => '10.04',
+        :majrelease        => '10',
+        :lsbdistcodename   => 'lucid',
+        :packages          => 'gitolite',
+        :package_name     => 'gitolite',
+        :gitolite_version  => '2',
+        :cmd_install       => 'gl-setup -q',
+        :group_name        => 'gitolite',
+        :user_name         => 'gitolite',
+      },
+    'ubuntu1204' =>
+      { :osfamily          => 'Debian',
+        :release           => '12.04',
+        :majrelease        => '12',
+        :lsbdistcodename   => 'precise',
+        :packages          => 'gitolite',
+        :package_name     => 'gitolite',
+        :gitolite_version  => '2',
+        :cmd_install       => 'gl-setup -q',
+        :group_name        => 'gitolite',
+        :user_name         => 'gitolite',
+      },
+    'ubuntu1404' =>
+      { :osfamily          => 'Debian',
+        :release           => '14.04',
+        :majrelease        => '14',
+        :lsbdistcodename   => 'trusty',
+        :packages          => 'gitolite',
+        :package_name     => 'gitolite3',
+        :gitolite_version  => '3',
+        :cmd_install       => 'gitolite setup -pk',
+        :group_name        => 'gitolite3',
+        :user_name         => 'gitolite3',
+      },
+    'ubuntu1604' =>
+      { :osfamily          => 'Debian',
+        :release           => '16.04',
+        :majrelease        => '16',
+        :lsbdistcodename   => 'xenial',
+        :packages          => 'gitolite',
+        :package_name     => 'gitolite3',
+        :gitolite_version  => '3',
+        :cmd_install       => 'gitolite setup -pk',
+        :group_name        => 'gitolite3',
+        :user_name         => 'gitolite3',
+      },
   }
 
   describe 'with just an admin_key_content and default values for parameters on' do
@@ -124,14 +134,13 @@ describe 'gitolite', :type => 'class' do
             :operatingsystemmajrelease => v[:majrelease],
           }
         end
-        let(:params) { { :admin_key_content => 'key test@test' } }
 
         # If support for another osfamily is added, this should be specified
         # per platform in the platforms hash.
         if v[:osfamily] == 'Suses'
           home_dir = '/srv/git'
         elsif v[:osfamily] == 'Debian' || v[:osfamily] == 'RedHat'
-          home_dir = '/var/lib/' + v[:packages]
+          home_dir = '/var/lib/' + v[:package_name]
         else
           fail 'unsupported osfamily detected'
         end
@@ -175,12 +184,12 @@ describe 'gitolite', :type => 'class' do
             'password_min_age' => '0',
             'shell'            => '/bin/sh',
             'system'           => true,
-            'before'           => 'File[' + home_dir + ']',
+            'before'           => 'File[gitolite_home_dir]',
           })
         end
 
         it do
-          should contain_file('gitolite_config_dir').with({
+          should contain_file('gitolite_home_dir').with({
             'ensure'  => 'directory',
             'path'    => home_dir,
             'owner'   => v[:user_name],
@@ -193,7 +202,6 @@ describe 'gitolite', :type => 'class' do
           should contain_file('gitolite_admin_key').with({
             'ensure'  => 'file',
             'path'    => home_dir + '/admin.pub',
-            'content' => admin_key_content,
             'owner'   => v[:user_name],
             'group'   => v[:group_name],
             'mode'    => '0400',
@@ -247,7 +255,7 @@ describe 'gitolite', :type => 'class' do
 
     context 'when home_dir is set to valid path </opt/gitolite>' do
       let(:params) { { :home_dir => '/opt/gitolite' } }
-      it { should contain_file(gitolite_admin_key).with_path('/opt/gitolite/admin.pub') }
+      it { should contain_file('gitolite_admin_key').with_path('/opt/gitolite/admin.pub') }
       it { should contain_exec('gitolite_install_admin_key').with(:environment => 'HOME=/opt/gitolite') }
       it { should contain_file('gitolite_home_dir').with_path('/opt/gitolite') }
     end
@@ -304,16 +312,8 @@ describe 'gitolite', :type => 'class' do
       }
     end
 
-    context 'with default values for parameters on' do
-      it 'should fail' do
-        expect do
-          should contain_class('gitolite')
-        end.to raise_error(Puppet::Error, /ToDo/)
-      end
-    end
-
     context 'when home_dir is set to invalid absolute path <foo/bar>' do
-      let(:params) { { :home_dir => 'foo/bar', :admin_key_content => 'key test@test' } }
+      let(:params) { { :home_dir => 'foo/bar' } }
 
       it 'should fail' do
         expect do
@@ -323,7 +323,7 @@ describe 'gitolite', :type => 'class' do
     end
 
     context 'when umask is set to invalid umask <0999>' do
-      let(:params) { { :umask => '0999', :admin_key_content => 'key test@test' } }
+      let(:params) { { :umask => '0999' } }
 
       it 'should fail' do
         expect do
@@ -417,6 +417,11 @@ describe 'gitolite', :type => 'class' do
       }
     end
 
+    context "should validate local_code_in_repo is a bool" do
+      let(:params) { { :local_code_in_repo => 10 } }
+      it { should compile.and_raise_error(/is not a boolean/) }
+    end
+
     validations = {
       'absolute_path' => {
         :name    => %w(home_dir),
@@ -427,7 +432,7 @@ describe 'gitolite', :type => 'class' do
       'bool_stringified' => {
         :name    => %w(
           manage_home_dir manage_user allow_local_code
-          local_code_in_repo repo_specific_hooks
+          repo_specific_hooks
         ),
         :valid   => [true, 'true', false, 'false'],
         :invalid => ['invalid', 3, 2.42, %w(array), { 'ha' => 'sh' }, nil],
@@ -435,10 +440,16 @@ describe 'gitolite', :type => 'class' do
       },
       'string' => {
         :name    => %w(
-          admin_key_source admin_key_content git_config_keys group_name
+          admin_key_content git_config_keys group_name
           local_code_path package_ensure package_name user_name
         ),
         :valid   => ['present'],
+        :invalid => [%w(array), { 'ha' => 'sh' }],
+        :message => 'is not a string',
+      },
+      'string_file_source' => {
+        :name    => %w(admin_key_source),
+        :valid   => %w(puppet:///modules/subject/test),
         :invalid => [%w(array), { 'ha' => 'sh' }],
         :message => 'is not a string',
       },
