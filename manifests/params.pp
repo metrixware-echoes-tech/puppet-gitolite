@@ -2,24 +2,46 @@
 #
 # This is a container class with default parameters for gitolite classes.
 class gitolite::params {
-  $package_ensure = 'present'
+  $admin_key_content   = undef
+  $admin_key_source    = undef
+  $allow_local_code    = false
+  $git_config_keys     = ''
+  $local_code_in_repo  = false
+  $local_code_path     = 'local'
+  $manage_home_dir     = true
+  $manage_user         = true
+  $package_ensure      = 'present'
+  $repo_specific_hooks = false
+  $umask               = '0077'
 
+  # <OS family handling>
   case $::osfamily {
     'Debian': {
       case $::lsbdistcodename {
         'squeeze', 'wheezy', 'lucid', 'precise': {
           $version = '2'
         }
-        default: {
+        'jessie', 'trusty', 'xenial': {
           $version = '3'
+        }
+        default: {
+          fail("gitolite supports Debian 6 (squeeze), 7 (wheezy) and 8 (jessie) \
+and Ubuntu 10.04 (lucid), 12.04 (precise), 14.04 (trusty) and 16.04 (xenial). \
+Detected lsbdistcodename is <${::lsbdistcodename}>.")
         }
       }
     }
     'RedHat': {
-      if versioncmp($::operatingsystemrelease, '6') < 0 {
-        $version = '2'
-      } else {
-        $version = '3'
+      case $::operatingsystemmajrelease {
+        '5': {
+          $version = '2'
+        }
+        '6', '7': {
+          $version = '3'
+        }
+        default: {
+          fail("gitolite supports EL 5, 6 and 7. Detected operatingsystemmajrelease is <${::operatingsystemmajrelease}>.")
+        }
       }
     }
     'Suse': {
@@ -31,7 +53,7 @@ class gitolite::params {
       $version      = '3'
     }
     default: {
-      fail("Unsupported OS family: ${::osfamily}")
+      fail("gitolite supports osfamilies Debian, RedHat and Suse. Detected osfamily is <${::osfamily}>.")
     }
   }
 
@@ -47,13 +69,5 @@ class gitolite::params {
     $home_dir   = "/var/lib/${package_name}"
     $user_name  = $package_name
   }
-
-  $allow_local_code    = false
-  $git_config_keys     = ''
-  $local_code_in_repo  = false
-  $local_code_path     = 'local'
-  $manage_home_dir     = true
-  $manage_user         = true
-  $repo_specific_hooks = false
-  $umask               = '0077'
+  # </OS family handling>
 }

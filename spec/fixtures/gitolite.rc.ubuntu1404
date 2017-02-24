@@ -21,10 +21,10 @@
 
     # default umask gives you perms of '0700'; see the rc file docs for
     # how/why you might change this
-    UMASK                           =>  <%= @umask %>,
+    UMASK                           =>  0077,
 
     # look for "git-config" in the documentation
-    GIT_CONFIG_KEYS                 =>  '<%= @git_config_keys %>',
+    GIT_CONFIG_KEYS                 =>  '',
 
     # comment out if you don't need all the extra detail in the logfile
     LOG_EXTRA                       =>  1,
@@ -70,12 +70,12 @@
     # suggested locations for site-local gitolite code (see cust.html)
 
         # this one is managed directly on the server
-        <% if ! @allow_local_code_bool || @local_code_in_repo_bool %><%= '# ' -%><% end %>LOCAL_CODE                =>  "$ENV{HOME}/<%= @local_code_path %>",
+        # LOCAL_CODE                =>  "$ENV{HOME}/local",
 
         # or you can use this, which lets you put everything in a subdirectory
         # called "local" in your gitolite-admin repo.  For a SECURITY WARNING
         # on this, see http://gitolite.com/gitolite/cust.html#pushcode
-        <% if ! @allow_local_code_bool || ! @local_code_in_repo_bool %><%= '# ' -%><% end %>LOCAL_CODE                =>  "$rc{GL_ADMIN_BASE}/<%= @local_code_path %>",
+        # LOCAL_CODE                =>  "$rc{GL_ADMIN_BASE}/local",
 
     # ------------------------------------------------------------------
 
@@ -159,7 +159,7 @@
             # 'cgit',
 
             # allow repo-specific hooks to be added
-            <% if ! @repo_specific_hooks_bool %><%= '# ' -%><% end %>'repo-specific-hooks',
+            # 'repo-specific-hooks',
 
         # performance, logging, monitoring...
 
