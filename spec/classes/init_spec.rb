@@ -121,6 +121,18 @@ describe 'gitolite', :type => 'class' do
         :group_name        => 'gitolite3',
         :user_name         => 'gitolite3',
       },
+      'sles12' =>
+        { :osfamily          => 'Suse',
+          :release           => '12.0',
+          :majrelease        => '12',
+          :lsbdistcodename   => nil,
+          :packages          => 'gitolite',
+          :package_name     => 'gitolite3',
+          :gitolite_version  => '3',
+          :cmd_install       => 'gitolite setup -pk',
+          :group_name        => 'git',
+          :user_name         => 'git',
+        },
   }
 
   describe 'with just an admin_key_content and default values for parameters on' do
@@ -137,7 +149,7 @@ describe 'gitolite', :type => 'class' do
 
         # If support for another osfamily is added, this should be specified
         # per platform in the platforms hash.
-        if v[:osfamily] == 'Suses'
+        if v[:osfamily] == 'Suse'
           home_dir = '/srv/git'
         elsif v[:osfamily] == 'Debian' || v[:osfamily] == 'RedHat'
           home_dir = '/var/lib/' + v[:package_name]
