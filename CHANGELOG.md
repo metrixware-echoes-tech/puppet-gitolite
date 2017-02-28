@@ -1,3 +1,7 @@
+## 2017-02-28 - Release 1.0.0
+### Summary
+This release fixes typo and  adds a lot of test improvements.
+
 ## 2015-02-29 - Release 0.4.0
 ### Summary
 This release adds options to custom the `.gitolite.rc` files and many tests.
