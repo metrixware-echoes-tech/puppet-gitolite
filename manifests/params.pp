@@ -21,11 +21,11 @@ class gitolite::params {
         'squeeze', 'wheezy', 'lucid', 'precise': {
           $version = '2'
         }
-        'jessie', 'trusty', 'xenial': {
+        'jessie', 'stretch', 'trusty', 'xenial': {
           $version = '3'
         }
         default: {
-          fail("gitolite supports Debian 6 (squeeze), 7 (wheezy) and 8 (jessie) \
+          fail("gitolite supports Debian 6 (squeeze), 7 (wheezy), 8 (jessie) and 9 (stretch) \
 and Ubuntu 10.04 (lucid), 12.04 (precise), 14.04 (trusty) and 16.04 (xenial). \
 Detected lsbdistcodename is <${::lsbdistcodename}>.")
         }
