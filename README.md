@@ -82,12 +82,12 @@ Tells Puppet which path of administration SSH key to add to Gitolite. Exclusive 
 Tells Puppet whether the `LOCAL_CODE` setting of `.gitolite.rc` file is enabled. Valid options: boolean. Default value: false
 
 The value of `LOCAL_CODE` is $ENV{HOME}/local. This option is only available for Gitolite 3.
-For more details, see : http://gitolite.com/gitolite/non-core.html#localcode
+For more details, see: http://gitolite.com/gitolite/non-core/index.html#using-the-gitolite-admin-repo-to-manage-non-core-code
 
 ##### `git_config_keys`
 
 This setting of `.gitolite.rc` file allows the repo admin to define acceptable gitconfig keys. Valid options: string. Default value: empty
-For more details, see : http://gitolite.com/gitolite/rc.html#specific-variables
+For more details, see: http://gitolite.com/gitolite/rc/index.html#specific-variables
 
 ##### `group_name`
 
