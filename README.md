@@ -126,6 +126,7 @@ Tells Puppet which Gitolite package to manage. Valid options: string. Default va
 Tells Puppet whether to enable the `repo-specific-hooks` feature in `.gitolite.rc`. Valid options: boolean. Default value: false
 
 This option is only available for Gitolite 3.
+For more details, see: http://gitolite.com/gitolite/non-core/index.html#repo-specific-hooks
 
 ##### `umask`
 
