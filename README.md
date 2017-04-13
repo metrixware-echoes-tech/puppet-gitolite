@@ -1,9 +1,7 @@
 # gitolite
 
-[![Build Status](https://travis-ci.org/echoes-tech/puppet-gitolite.svg?branch=master)]
-(https://travis-ci.org/echoes-tech/puppet-gitolite)
-[![Flattr Button](https://api.flattr.com/button/flattr-badge-large.png "Flattr This!")]
-(https://flattr.com/submit/auto?user_id=echoes&url=https://forge.puppetlabs.com/echoes/gitolite&title=Puppet%20module%20to%20manage%20Gitolite&description=This%20module%20installs%20and%20configures%20Gitolite.&lang=en_GB&category=software "Puppet module to manage Gitolite installation and configuration")
+[![Build Status](https://travis-ci.org/echoes-tech/puppet-gitolite.svg?branch=master)](https://travis-ci.org/echoes-tech/puppet-gitolite)
+[![Flattr Button](https://api.flattr.com/button/flattr-badge-large.png "Flattr This!")](https://flattr.com/submit/auto?user_id=echoes&url=https://forge.puppetlabs.com/echoes/gitolite&title=Puppet%20module%20to%20manage%20Gitolite&description=This%20module%20installs%20and%20configures%20Gitolite.&lang=en_GB&category=software "Puppet module to manage Gitolite installation and configuration")
 
 #### Table of Contents
 
@@ -84,12 +82,12 @@ Tells Puppet which path of administration SSH key to add to Gitolite. Exclusive 
 Tells Puppet whether the `LOCAL_CODE` setting of `.gitolite.rc` file is enabled. Valid options: boolean. Default value: false
 
 The value of `LOCAL_CODE` is $ENV{HOME}/local. This option is only available for Gitolite 3.
-For more details, see : http://gitolite.com/gitolite/non-core.html#localcode
+For more details, see: http://gitolite.com/gitolite/non-core/index.html#using-the-gitolite-admin-repo-to-manage-non-core-code
 
 ##### `git_config_keys`
 
 This setting of `.gitolite.rc` file allows the repo admin to define acceptable gitconfig keys. Valid options: string. Default value: empty
-For more details, see : http://gitolite.com/gitolite/rc.html#specific-variables
+For more details, see: http://gitolite.com/gitolite/rc/index.html#specific-variables
 
 ##### `group_name`
 
@@ -128,6 +126,7 @@ Tells Puppet which Gitolite package to manage. Valid options: string. Default va
 Tells Puppet whether to enable the `repo-specific-hooks` feature in `.gitolite.rc`. Valid options: boolean. Default value: false
 
 This option is only available for Gitolite 3.
+For more details, see: http://gitolite.com/gitolite/non-core/index.html#repo-specific-hooks
 
 ##### `umask`
 
