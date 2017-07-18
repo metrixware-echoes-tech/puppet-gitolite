@@ -272,6 +272,12 @@ describe 'gitolite', :type => 'class' do
       it { should contain_file('gitolite_home_dir').with_path('/opt/gitolite') }
     end
 
+    context 'when mirror_hostname is set to valid string <.*>' do
+      let(:params) { { :mirror_hostname => '.*' } }
+      it { should contain_file('gitolite_config').with_content(/^\s+'Mirroring',/) }
+      it { should contain_file('gitolite_config').with_content(/^\s+HOSTNAME\s+=>\s+".*",$/) }
+    end
+
     context 'when allow_local_code and local_code_in_repo are set to valid bool <true>' do
       let(:params) { { :allow_local_code => true, :local_code_in_repo => true } }
       it { should contain_file('gitolite_config').with_content(/^\s+# LOCAL_CODE\s+=>\s+"\$ENV\{HOME\}\/local",$/) }
@@ -452,8 +458,8 @@ describe 'gitolite', :type => 'class' do
       },
       'string' => {
         :name    => %w(
-          admin_key_content git_config_keys group_name
-          local_code_path package_ensure package_name user_name
+          admin_key_content git_config_keys group_name local_code_path
+          mirror_hostname package_ensure package_name user_name
         ),
         :valid   => ['present'],
         :invalid => [%w(array), { 'ha' => 'sh' }],

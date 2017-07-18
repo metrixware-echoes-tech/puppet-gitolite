@@ -115,6 +115,11 @@ Tells Puppet what the path of `LOCAL_CODE` setting of `.gitolite.rc` file is. Va
 
 Whether the user/group resources will be managed by this module. Default value: true
 
+##### `mirror_hostname`
+
+Tells Puppet whether to enable the `Mirroring` feature and set the value of `Hostname` in `.gitolite.rc`. Valid options: string. Default value: undef
+For more details, see : http://gitolite.com/gitolite/mirroring/
+
 ##### `package_ensure`
 
 Tells Puppet whether the Gitolite package should be installed, and what version. Valid options: 'present', 'latest', or a specific version number. Default value: 'present'

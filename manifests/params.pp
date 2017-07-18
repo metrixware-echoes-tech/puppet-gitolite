@@ -10,6 +10,7 @@ class gitolite::params {
   $local_code_path     = 'local'
   $manage_home_dir     = true
   $manage_user         = true
+  $mirror_hostname     = undef
   $package_ensure      = 'present'
   $repo_specific_hooks = false
   $umask               = '0077'

@@ -7,6 +7,7 @@ class gitolite (
   $git_config_keys     = $gitolite::params::git_config_keys,
   $group_name          = $gitolite::params::group_name,
   $home_dir            = $gitolite::params::home_dir,
+  $mirror_hostname     = $gitolite::params::mirror_hostname,
   $local_code_in_repo  = $gitolite::params::local_code_in_repo,
   $local_code_path     = $gitolite::params::local_code_path,
   $manage_home_dir     = $gitolite::params::manage_home_dir,
@@ -69,6 +70,7 @@ class gitolite (
   validate_string($local_code_path)
   validate_bool($manage_home_dir_bool)
   validate_bool($manage_user_bool)
+  validate_string($mirror_hostname)
   validate_string($package_ensure)
   validate_string($package_name)
   validate_bool($repo_specific_hooks_bool)
